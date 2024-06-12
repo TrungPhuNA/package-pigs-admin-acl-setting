@@ -2,5 +2,5 @@
 
 
 ## Setting
-* composer require pigs/blog-admin
+* pigs/admin-acl-setting
 * Pigs\AdminAclSetting\Provides\AdminAclSettingProvider::class
