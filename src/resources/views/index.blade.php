@@ -1,47 +1,33 @@
 @extends('adm_acl_setting::layout.adm_acl_master')
 @section('content')
-    <div class="container-fluid px-4">
-        <h1 class="mt-4">Dashboard</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-        <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">Bài viết</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
+    <h2>Thống kê</h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="box p-3 mb-2 bg-primary text-white">
+                <h6>Thành viên <b id="totalUser"><i class="fa fa-spinner fa-spin"
+                                                    style="font-size:24px;color:white"></i></b></h6>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-warning text-white mb-4">
-                    <div class="card-body">Từ khoá</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="box p-3 mb-2 bg-danger text-white">
+                <h6>Sản phẩm <b id="totalProduct"><i class="fa fa-spinner fa-spin"
+                                                     style="font-size:24px;color:white"></i></b></h6>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Chuyên mục</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="box p-3 mb-2 bg-info text-white">
+                <h6>Đơn hàng <b id="totalOrder"><i class="fa fa-spinner fa-spin" style="font-size:24px;color:white"></i></b>
+                </h6>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Danger Card</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="box p-3 mb-2 bg-secondary text-white">
+                <h6>User mới <b id="totalUserNew"><i class="fa fa-spinner fa-spin"
+                                                     style="font-size:24px;color:white"></i></b></h6>
             </div>
         </div>
     </div>
+@stop
+
+@section('script')
 @stop

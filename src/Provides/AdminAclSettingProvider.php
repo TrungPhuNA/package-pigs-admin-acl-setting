@@ -22,6 +22,9 @@ class AdminAclSettingProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/adm_acl_setting'),
         ]);
+        $this->publishes([
+            __DIR__.'/../theme_admin' => resource_path('../public/theme_admin'),
+        ], 'adm_acl_setting_asset');
 
         $this->publishes([
             __DIR__.'/../config/adm_blog_config.php' => config_path('adm_acl_setting_config.php')
