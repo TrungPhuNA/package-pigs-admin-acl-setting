@@ -1,0 +1,19 @@
+{
+    "name": "pigs/admin-acl-setting",
+    "description": "Build admin acl and setting",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pigs\\AdminAclSetting\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "phudev",
+            "email": "codethue94@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
