@@ -89,13 +89,13 @@
                                 </span>
                             <span>
                                     <span class="account-user-name">Hi - {{ Auth::user()->name ?? "" }}</span>
-                                    <span class="account-position">Founder</span>
+                                    <span class="account-position">ACL</span>
                                 </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
                             <!-- item-->
                             <div class=" dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome !</h6>
+                                <h6 class="text-overflow m-0">Welcome ! {{ Auth::user()->name ?? "" }}</h6>
                             </div>
                             <!-- item-->
                             <a href="" class="dropdown-item notify-item">
@@ -103,7 +103,7 @@
                                 <span>Cập nhật thông tin</span>
                             </a>
                             <!-- item-->
-                            <a href="" class="dropdown-item notify-item">
+                            <a href="{{ route('get.adm_acl_setting.logout') }}" title="Logout" class="dropdown-item notify-item">
                                 <i class="mdi mdi-logout me-1"></i>
                                 <span>Đăng xuất</span>
                             </a>

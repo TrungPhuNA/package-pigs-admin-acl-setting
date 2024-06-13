@@ -2,5 +2,5 @@
 
 
 ## Setting
-* pigs/admin-acl-setting
+* composer require pigs/admin-acl-setting
 * Pigs\AdminAclSetting\Provides\AdminAclSettingProvider::class

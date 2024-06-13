@@ -7,12 +7,19 @@
  */
 
 use Illuminate\Support\Facades\Route;
-Route::get('/admin-acl', function (){
-   return "OK";
-});
-Route::group(['namespace' => 'Pigs\AdminAclSetting\Http\Controllers','prefix' => 'admin-acl'], function() {
-    Route::get('', 'AdminAclDashboardController@index')->name('get.adm_acl_setting.dashboard');
 
+Route::group(['namespace' => 'Pigs\AdminAclSetting\Http\Controllers','prefix' => 'auth-acl','middleware' => 'web'], function() {
+    Route::get('login','AdminAclLoginController@login')->name('get.adm_acl_setting.login');
+    Route::post('login','AdminAclLoginController@postLogin');
+
+    Route::get('logout','AdminAclLoginController@logout')->name('get.adm_acl_setting.logout');
+
+    Route::get('register','AdminAclRegisterController@register')->name('get.adm_acl_setting.register');
+    Route::post('register','AdminAclRegisterController@postRegister');
+});
+
+Route::group(['namespace' => 'Pigs\AdminAclSetting\Http\Controllers','prefix' => 'admin-acl','middleware' => ['web','check_login_admin']], function() {
+    Route::get('', 'AdminAclDashboardController@index')->name('get.adm_acl_setting.dashboard');
     Route::group(['prefix' => 'permission'], function (){
         Route::get('','AdminAclPermissionController@index')->name('get.adm_acl_setting.permission.index');
 
@@ -48,4 +55,4 @@ Route::group(['namespace' => 'Pigs\AdminAclSetting\Http\Controllers','prefix' =>
 
         Route::get('delete/{id}','AdminAclUserController@delete')->name('get.adm_acl_setting.user.delete');
     });
-});
+})->middleware('auth');

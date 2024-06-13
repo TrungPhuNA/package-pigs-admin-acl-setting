@@ -3,12 +3,11 @@
 namespace Pigs\AdminAclSetting\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Pigs\AdminAclSetting\Http\Requests\AdmAclPermissionRequest;
 use Pigs\AdminAclSetting\Models\Permission;
 
 class AdminAclPermissionController extends Controller
@@ -31,7 +30,7 @@ class AdminAclPermissionController extends Controller
         return view('adm_acl_setting::pages.permission.create');
     }
 
-    public function store(Request $request)
+    public function store(AdmAclPermissionRequest $request)
     {
         try {
             $data = $request->except('_token');

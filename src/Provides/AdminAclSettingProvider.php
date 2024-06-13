@@ -9,12 +9,28 @@
 namespace Pigs\AdminAclSetting\Provides;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
+use Pigs\AdminAclSetting\Middleware\CheckLoginAdminMiddleware;
 
 class AdminAclSettingProvider extends ServiceProvider
 {
     public function boot() {
+        $router = $this->app->make(Router::class);
+        $router->middlewareGroup('web', [
+                \App\Http\Middleware\EncryptCookies::class,
+                \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+                \Illuminate\Session\Middleware\StartSession::class,
+                \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+                \App\Http\Middleware\VerifyCsrfToken::class,
+                \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            ]
+        );
+        $router->aliasMiddleware('check_login_admin',CheckLoginAdminMiddleware::class);
+
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'adm_acl_setting');
+
+
         $this->mergeConfigFrom(
             __DIR__.'/../config/adm_acl_setting_config.php','adm_acl_setting_config'
         );
