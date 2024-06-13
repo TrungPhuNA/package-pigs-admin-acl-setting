@@ -11,10 +11,10 @@
     <div class="row">
         @foreach($permissions ?? [] as $item)
             <div class="form-group form-check col-sm-3">
-                <div class="form-group form-check">
-                    <label class="form-check-label" style="display: flex;justify-content: space-between" for="exampleCheck1">
-                        <span>{{ $item->description }}</span>
-                        <input type="checkbox" class="form-check-input" {{ in_array($item->id, $permissionActive) ? "checked" : "" }}  value="{{ $item->id }}" name="permissions[]">
+                <div class="form-check hover-focus">
+                    <input class="form-check-input" type="checkbox" id="permission_{{ $item->id }}" value="{{ $item->id }}" name="permissions[]" {{ in_array($item->id, $permissionActive) ? "checked" : "" }} />
+                    <label class="form-check-label" for="permission_{{ $item->id }}">
+                        {{ $item->description }}
                     </label>
                 </div>
             </div>

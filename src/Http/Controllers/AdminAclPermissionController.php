@@ -35,7 +35,17 @@ class AdminAclPermissionController extends Controller
         try {
             $data = $request->except('_token');
             $data['created_at'] = Carbon::now();
-            $data['slug'] = Str::slug($request->name);
+
+            $permission = $request->name;
+            $permission = str_replace("//", "",$permission);
+            $arrPath = explode('/', $permission);
+            $result = array_slice($arrPath, 1);
+            $permission =  implode("-",$result);
+            $permission = preg_replace('/\d+/', '', $permission);
+            $permission = trim($permission, '-');
+
+            $data["name"]= $permission;
+            $data["slug"]= Str::slug($permission);
             Permission::create($data);
         }catch (\Exception $exception) {
             Log::error("ERROR => AdminAclPermissionController@store => ". $exception->getMessage());
@@ -50,11 +60,21 @@ class AdminAclPermissionController extends Controller
         return view('adm_acl_setting::pages.permission.update', compact('permission'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(AdmAclPermissionRequest $request, $id) {
         try {
             $data = $request->except('_token');
             $data['updated_at'] = Carbon::now();
-            $data['slug'] = Str::slug($request->name);
+
+            $permission = $request->name;
+            $permission = str_replace("//", "",$permission);
+            $arrPath = explode('/', $permission);
+            $result = array_slice($arrPath, 1);
+            $permission =  implode("-",$result);
+            $permission = preg_replace('/\d+/', '', $permission);
+            $permission = trim($permission, '-');
+            $data["name"]= $permission;
+            $data["slug"]= Str::slug($permission);
+
             Permission::find($id)->update($data);
         }catch (\Exception $exception) {
             Log::error("ERROR => AdminAclPermissionController@store => ". $exception->getMessage());
