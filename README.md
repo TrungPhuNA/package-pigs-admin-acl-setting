@@ -1,13 +1,48 @@
-# ADMIN ALC
+# Laravel Admin Acl Blog ...
 
-* ICON https://unicons.iconscout.com/release/v1.0.0/index.html
-* Tham khảo ecommerce  https://ninico.botble.com/admin
-* THEME tham khảo https://coderthemes.com/hyper_2/saas/index.html
-* v1.2.1
-## Setting
-* composer require pigs/admin-acl-setting
-* Pigs\AdminAclSetting\Provides\AdminAclSettingProvider::class
-* php artisan vendor:publish --tag="adm_acl_setting_asset"
-* php artisan vendor:publish --tag="adm_acl_setting_config"
-* php artisan vendor:publish --tag="adm_acl_setting_migration"
-* php artisan adm-acl:seed-permission
+Build core admin, acl, blog setting config
+
+
+## Description
+
+Build cho vui, tái sửa dụng, ae nào muốn phát triển cứ clone về nhé. 
+Version v1.2.1
+
+## Installation
+
+```bash
+composer require pigs/admin-acl-setting
+```
+
+### Khai báo service  config/app.php
+```php
+'providers' => ServiceProvider::defaultProviders()->merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        ...
+        Pigs\AdminAclSetting\Provides\AdminAclSettingProvider::class,
+        ...
+    ])->toArray(),
+```
+### Publish config, asset, migrate, seed data
+
+```bash
+php artisan vendor:publish --tag="adm_acl_setting_asset"
+```
+
+```bash
+php artisan vendor:publish --tag="adm_acl_setting_config"
+```
+
+```bash
+php artisan vendor:publish --tag="adm_acl_setting_migration"
+```
+
+```bash
+php artisan adm-acl:seed-permission
+```

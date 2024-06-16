@@ -8,7 +8,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['namespace' => 'Pigs\AdminAclSetting\Http\Controllers', 'prefix' => 'auth-acl', 'middleware' => 'web'],
+Route::group(['namespace' => 'Pigs\AdminAclSetting\Http\Controllers\Auth', 'prefix' => 'auth-acl', 'middleware' => 'web'],
     function () {
         Route::get('login', 'AdminAclLoginController@login')->name('get.adm_acl_setting.login');
         Route::post('login', 'AdminAclLoginController@postLogin');
