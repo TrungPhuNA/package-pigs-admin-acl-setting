@@ -1,11 +1,10 @@
 <?php
 
-namespace Pigs\AdminAclSetting\Http\Controllers;
+namespace Pigs\AdminAclSetting\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Pigs\AdminAclSetting\Models\Account;
 
 
 class AdminAclLoginController extends Controller

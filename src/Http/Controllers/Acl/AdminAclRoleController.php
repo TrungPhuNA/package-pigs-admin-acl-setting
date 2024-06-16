@@ -22,14 +22,14 @@ class AdminAclRoleController extends Controller
             'roles' => $roles
         ];
 
-        return view('adm_acl_setting::pages.role.index', $viewData);
+        return view('adm_acl_setting::pages.acl.role.index', $viewData);
     }
 
     public function create()
     {
         $permissions = Permission::all();
         $permissionActive = [];
-        return view('adm_acl_setting::pages.role.create', compact('permissions', 'permissionActive'));
+        return view('adm_acl_setting::pages.acl.role.create', compact('permissions', 'permissionActive'));
     }
 
     public function store(Request $request)
@@ -62,7 +62,7 @@ class AdminAclRoleController extends Controller
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
         $permissionActive = DB::table('roles_permissions')->where('role_id', $id)->pluck('permission_id')->toArray();
-        return view('adm_acl_setting::pages.role.update', compact('role', 'permissions', 'permissionActive'));
+        return view('adm_acl_setting::pages.acl.role.update', compact('role', 'permissions', 'permissionActive'));
     }
 
     public function update(Request $request, $id)

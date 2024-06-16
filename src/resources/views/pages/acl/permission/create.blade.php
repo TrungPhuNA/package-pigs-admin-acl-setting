@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            @include('adm_acl_setting::pages.permission.form')
+            @include('adm_acl_setting::pages.acl.permission.form')
         </div>
     </div>
 @stop

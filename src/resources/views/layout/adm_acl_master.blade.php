@@ -50,13 +50,30 @@
         <div class="h-100" id="leftside-menu-container" data-simplebar="">
             <ul class="side-nav">
                 @foreach(config('adm_acl_setting_config.sidebar') as $item)
-                    <li class="side-nav-item">
-                        <a class="side-nav-link {{  in_array(Request::segment(2), $item['prefix']) ? 'active' : '' }}"
-                           href="{{ route($item['route']) }}" title="{{ $item['name'] }}">
-                            <i class="{{ $item['icon-v2'] ?? $item['icon'] }}"></i>
-                            <span>{{ $item['name'] }}</span>
+                    @if(isset($item['submenus']))
+                        <a data-bs-toggle="collapse" href="#{{ $item['key'] }}" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
+                            <i class="{{ $item['icon-v2'] }}"></i>
+                            <span> {{ $item['name'] }} </span>
+                            <span class="menu-arrow"></span>
                         </a>
-                    </li>
+                        <div class="collapse" id="{{ $item['key'] }}">
+                            <ul class="side-nav-second-level">
+                                @foreach($item['submenus'] as $subMenu)
+                                    <li>
+                                        <a href="{{ route($subMenu['route']) }}">{{ $subMenu['name'] }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @else
+                        <li class="side-nav-item {{  in_array(Request::segment(2), $item['prefix']) ? 'menuitem-active active' : '' }}">
+                            <a class="side-nav-link"
+                               href="{{ route($item['route']) }}" title="{{ $item['name'] }}">
+                                <i class="{{ $item['icon-v2'] ?? $item['icon'] }}"></i>
+                                <span>{{ $item['name'] }}</span>
+                            </a>
+                        </li>
+                    @endif
                 @endforeach
             </ul>
 
@@ -119,7 +136,7 @@
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card mt-3">
                             <div class="card-body">
                                 <div class="tab-content">
                                     @yield('content')

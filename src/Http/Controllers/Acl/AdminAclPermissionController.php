@@ -22,12 +22,12 @@ class AdminAclPermissionController extends Controller
             'permissions' => $permissions
         ];
 
-        return view('adm_acl_setting::pages.permission.index', $viewData);
+        return view('adm_acl_setting::pages.acl.permission.index', $viewData);
     }
 
     public function create(Request $request)
     {
-        return view('adm_acl_setting::pages.permission.create');
+        return view('adm_acl_setting::pages.acl.permission.create');
     }
 
     public function store(AdmAclPermissionRequest $request)
@@ -57,7 +57,7 @@ class AdminAclPermissionController extends Controller
     public function edit($id)
     {
         $permission = Permission::findOrFail($id);
-        return view('adm_acl_setting::pages.permission.update', compact('permission'));
+        return view('adm_acl_setting::pages.acl.permission.update', compact('permission'));
     }
 
     public function update(AdmAclPermissionRequest $request, $id) {

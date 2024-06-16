@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            @include('adm_acl_setting::pages.role.form')
+            @include('adm_acl_setting::pages.acl.role.form')
         </div>
     </div>
 @stop

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pigs\AdminAclSetting\Http\Controllers;
+namespace Pigs\AdminAclSetting\Http\Controllers\Auth;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -8,8 +8,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Pigs\AdminAclSetting\Models\Account;
+use function Pigs\AdminAclSetting\Http\Controllers\upload_image;
 
 class AdminAclRegisterController extends Controller
 {
