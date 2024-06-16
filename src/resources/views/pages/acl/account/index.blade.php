@@ -1,18 +1,22 @@
 @extends('adm_acl_setting::layout.adm_acl_master')
 @section('content')
-    <div class="d-flex justify-content-between align-items-center">
-        <h2>Tài khoản</h2>
-        <a href="{{ route('get.adm_acl_setting.user.create') }}">Thêm mới</a>
+    <ol class="breadcrumb m-0 p-md-0">
+        <li class="breadcrumb-item"><a href="{{ route('get.adm_acl_setting.dashboard') }}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('get.adm_acl_setting.setting.index') }}">Setting</a></li>
+        <li class="breadcrumb-item active">User</li>
+    </ol>
+    <div class="mt-2 mb-2">
+        <form class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="inlineFormInputName" class="visually-hidden">Name</label>
+                <input type="text" name="n" class="form-control" value="{{ Request::get('n') }}" placeholder="Name" />
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Find</button>
+                <a href="{{ route('get.adm_acl_setting.user.create') }}" class="btn btn-success">Thêm mới</a>
+            </div>
+        </form>
     </div>
-{{--    <div>--}}
-{{--        <form class="form-inline">--}}
-{{--            <div class="form-group mb-2 mr-2">--}}
-{{--                <label for="inputPassword2" class="sr-only">Tên</label>--}}
-{{--                <input type="text" name="n" class="form-control" value="{{ Request::get('n') }}" placeholder="">--}}
-{{--            </div>--}}
-{{--            <button type="submit" class="btn btn-primary mb-2">Find</button>--}}
-{{--        </form>--}}
-{{--    </div>--}}
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -38,7 +42,7 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->phone }}</td>
                         <td>
-                            <span class="{{ $item->getStatus($item->status)['class'] ?? "badge badge-light" }}">{{ $item->getStatus($item->status)['name'] ?? "Tạm dừng" }}</span>
+                            <span class="{{ $item->getStatus($item->status)['class'] ?? "badge bg-secondary" }}">{{ $item->getStatus($item->status)['name'] ?? "Tạm dừng" }}</span>
                         </td>
                         <td>{{ $item->created_at }}</td>
                         <td>

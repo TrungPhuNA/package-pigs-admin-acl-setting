@@ -37,12 +37,12 @@ class AdminAclPermissionController extends Controller
             $data['created_at'] = Carbon::now();
 
             $permission = $request->name;
-            $permission = str_replace("//", "",$permission);
-            $arrPath = explode('/', $permission);
-            $result = array_slice($arrPath, 1);
-            $permission =  implode("-",$result);
-            $permission = preg_replace('/\d+/', '', $permission);
-            $permission = trim($permission, '-');
+//            $permission = str_replace("//", "",$permission);
+//            $arrPath = explode('/', $permission);
+//            $result = array_slice($arrPath, 1);
+//            $permission =  implode("-",$result);
+//            $permission = preg_replace('/\d+/', '', $permission);
+//            $permission = trim($permission, '-');
 
             $data["name"]= $permission;
             $data["slug"]= Str::slug($permission);
@@ -66,12 +66,12 @@ class AdminAclPermissionController extends Controller
             $data['updated_at'] = Carbon::now();
 
             $permission = $request->name;
-            $permission = str_replace("//", "",$permission);
-            $arrPath = explode('/', $permission);
-            $result = array_slice($arrPath, 1);
-            $permission =  implode("-",$result);
-            $permission = preg_replace('/\d+/', '', $permission);
-            $permission = trim($permission, '-');
+//            $permission = str_replace("//", "",$permission);
+//            $arrPath = explode('/', $permission);
+//            $result = array_slice($arrPath, 1);
+//            $permission =  implode("-",$result);
+//            $permission = preg_replace('/\d+/', '', $permission);
+//            $permission = trim($permission, '-');
             $data["name"]= $permission;
             $data["slug"]= Str::slug($permission);
 

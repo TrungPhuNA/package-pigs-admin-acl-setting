@@ -44,6 +44,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-4">
+                    <div class="item-box d-flex border mb-3" style="padding: 10px;border-radius: 4px">
+                        <div class="icon d-flex justify-content-center align-items-center" style="width: 40px;height: 40px;background-color: #f6f8fb;border-radius: 5px;margin-right: 5px">
+                            <i class="uil-user-hard-hat" style="font-size: 25px"></i>
+                        </div>
+                        <div class="content">
+                            <h5 style="margin: 0"><a href="{{ route('get.adm_acl_setting.role.index') }}">Role</a></h5>
+                            <p style="margin: 0;margin-top: 5px">Quản lý cập nhật role</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="item-box d-flex border mb-3" style="padding: 10px;border-radius: 4px">
+                        <div class="icon d-flex justify-content-center align-items-center" style="width: 40px;height: 40px;background-color: #f6f8fb;border-radius: 5px;margin-right: 5px">
+                            <i class="uil-key-skeleton" style="font-size: 25px"></i>
+                        </div>
+                        <div class="content">
+                            <h5 style="margin: 0"><a href="{{ route('get.adm_acl_setting.permission.index') }}">Permission</a></h5>
+                            <p style="margin: 0;margin-top: 5px">Quản lý cập nhật permission</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

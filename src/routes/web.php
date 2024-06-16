@@ -31,8 +31,8 @@ Route::group(['namespace'  => 'Pigs\AdminAclSetting\Http\Controllers', 'prefix' 
             Route::post('create', 'AdminAclPermissionController@store')->name('get.adm_acl_setting.permission.store');
 
             Route::get('update/{id}',
-                'AdminAclPermissionController@edit')->name('get.adm_acl_setting.permission.update');
-            Route::post('update/{id}', 'AdminAclPermissionController@update');
+                'AdminAclPermissionController@edit')->name('get.adm_acl_setting.permission.update')->name('get.adm_acl_setting.permission.update');
+            Route::post('update/{id}', 'AdminAclPermissionController@update')->name('get.adm_acl_setting.permission.update');
 
             Route::get('delete/{id}',
                 'AdminAclPermissionController@delete')->name('get.adm_acl_setting.permission.delete');

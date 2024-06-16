@@ -23,15 +23,15 @@ class Account extends Authenticatable
     protected $setStatus = [
         self::STATUS_DEFAULT => [
             'name' => 'Chờ kích hoạt',
-            'class' => 'badge badge-light'
+            'class' => 'badge bg-secondary'
         ],
         self::STATUS_CANCEL => [
             'name' => 'Khoá/ Block',
-            'class' => 'badge badge-danger'
+            'class' => 'badge bg-danger'
         ],
         self::STATUS_ACTIVE => [
             'name' => 'Hoạt động',
-            'class' => 'badge badge-primary'
+            'class' => 'badge bg-primary'
         ],
     ];
 

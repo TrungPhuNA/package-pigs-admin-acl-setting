@@ -14,6 +14,7 @@ class CheckLoginAdminMiddleware
 {
     public function handle($request, Closure $next)
     {
+//        dump(\Request::route()->getName());
         if (!Auth::check()) {
             return redirect()->route('get.adm_acl_setting.login');
         }

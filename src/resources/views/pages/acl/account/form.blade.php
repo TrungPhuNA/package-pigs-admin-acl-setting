@@ -5,14 +5,23 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Tên</label>
                 <input type="text" name="name" placeholder="Tên" class="form-control" value="{{ old('name', $user->name ?? "") }}">
+                @error('name')
+                    <small id="emailHelp" class="form-text text-danger">{{ $errors->first('name') }}</small>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
                 <input type="text" name="email" placeholder="Email" class="form-control" value="{{ old('email', $user->email ?? "") }}">
+                @error('email')
+                <small id="emailHelp" class="form-text text-danger">{{ $errors->first('email') }}</small>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Số điện thoại</label>
                 <input type="number" name="phone" placeholder="0986..." class="form-control" value="{{ old('phone', $user->phone ?? "") }}">
+                @error('phone')
+                <small id="emailHelp" class="form-text text-danger">{{ $errors->first('phone') }}</small>
+                @enderror
             </div>
 
             <div class="row">

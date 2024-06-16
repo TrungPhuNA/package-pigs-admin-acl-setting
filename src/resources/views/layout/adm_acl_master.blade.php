@@ -17,6 +17,10 @@
         .form-group {
             margin-bottom: 1rem;
         }
+        .form-group label {
+            margin-bottom: 5px;
+        }
+
     </style>
 </head>
 

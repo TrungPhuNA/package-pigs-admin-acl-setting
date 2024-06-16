@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Pigs\AdminAclSetting\Http\Requests\AdmAclAccountRequest;
 use Pigs\AdminAclSetting\Models\Account;
 use Pigs\AdminAclSetting\Models\Role;
 
@@ -39,7 +40,7 @@ class AdminAclUserController extends Controller
         return view('adm_acl_setting::pages.acl.account.create', compact('roles', 'roleActive', 'userHasType'));
     }
 
-    public function store(Request $request)
+    public function store(AdmAclAccountRequest $request)
     {
         try {
             $data = $request->except('_token', 'avatar', 'user_type', 'roles');

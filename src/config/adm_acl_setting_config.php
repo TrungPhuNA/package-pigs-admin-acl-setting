@@ -17,20 +17,6 @@ return [
             'prefix'  => ['']
         ],
         [
-            'name'    => 'Permission',
-            'icon'    => 'fas fa-tags',
-            'icon-v2' => 'uil-store',
-            'route'   => 'get.adm_acl_setting.permission.index',
-            'prefix'  => ['permission']
-        ],
-        [
-            'name'    => 'Role',
-            'icon'    => 'fas fa-pencil',
-            'route'   => 'get.adm_acl_setting.role.index',
-            'icon-v2' => 'uil-key-skeleton',
-            'prefix'  => ['role']
-        ],
-        [
             'name'     => 'Blog',
             'icon-v2'  => 'uil-notebooks',
             'route'    => '',
@@ -65,7 +51,7 @@ return [
             'icon'    => 'fas fa-cogs',
             'icon-v2' => 'uil-cog',
             'route'   => 'get.adm_acl_setting.setting.index',
-            'prefix'  => ['setting','user']
+            'prefix'  => ['setting','user','role','permission']
         ],
     ],
     'blog'    => [

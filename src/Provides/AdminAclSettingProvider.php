@@ -10,6 +10,7 @@ namespace Pigs\AdminAclSetting\Provides;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
+use Pigs\AdminAclSetting\Command\AclSeedPermissionCommand;
 use Pigs\AdminAclSetting\Middleware\CheckLoginAdminMiddleware;
 
 class AdminAclSettingProvider extends ServiceProvider
@@ -25,12 +26,22 @@ class AdminAclSettingProvider extends ServiceProvider
                 \Illuminate\Routing\Middleware\SubstituteBindings::class,
             ]
         );
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                AclSeedPermissionCommand::class,
+            ]);
+        }
+
         $router->aliasMiddleware('check_login_admin',CheckLoginAdminMiddleware::class);
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'adm_acl_setting');
+        $this->publishesConfig();
+    }
 
-
+    public function publishesConfig()
+    {
         $this->mergeConfigFrom(
             __DIR__.'/../config/adm_acl_setting_config.php','adm_acl_setting_config'
         );
