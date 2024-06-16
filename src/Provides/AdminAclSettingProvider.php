@@ -12,6 +12,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
 use Pigs\AdminAclSetting\Command\AclSeedPermissionCommand;
 use Pigs\AdminAclSetting\Middleware\CheckLoginAdminMiddleware;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
+use Pigs\AdminAclSetting\Models\SettingWebsite;
 
 class AdminAclSettingProvider extends ServiceProvider
 {
@@ -37,10 +40,11 @@ class AdminAclSettingProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'adm_acl_setting');
+        $this->registerConfigEmail();
         $this->publishesConfig();
     }
 
-    public function publishesConfig()
+    public function publishesConfig(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/adm_acl_setting_config.php','adm_acl_setting_config'
@@ -60,5 +64,22 @@ class AdminAclSettingProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ],'adm_acl_setting_migration');
+    }
+
+    public function registerConfigEmail(): void
+    {
+        if (Schema::hasTable('settings_website')) {
+            $emailSettings = SettingWebsite::first();
+            if ($emailSettings) {
+                Config::set('mail.mailer', $emailSettings->mail_mailer);
+                Config::set('mail.host', $emailSettings->mail_host);
+                Config::set('mail.port', $emailSettings->mail_port);
+                Config::set('mail.username', $emailSettings->mail_username);
+                Config::set('mail.password', $emailSettings->mail_password);
+                Config::set('mail.encryption', $emailSettings->mail_encryption ?? "tls");
+                Config::set('mail.from.address', $emailSettings->mail_from_address);
+                Config::set('mail.from.name', $emailSettings->mail_domain);
+            }
+        }
     }
 }

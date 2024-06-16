@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Pigs\AdminAclSetting\Http\Requests\AdmAclSettingEmailRequest;
 use Pigs\AdminAclSetting\Models\SettingWebsite;
+use Illuminate\Support\Facades\Mail;
 
 class AdminAclSettingController extends Controller
 {
@@ -68,5 +69,18 @@ class AdminAclSettingController extends Controller
             Log::error("=========== ". json_encode($exception->getMessage()));
             return redirect()->back();
         }
+    }
+
+    public function testSendEmail(Request $request)
+    {
+        try{
+            Mail::raw('codethue94@gmail.com', function ($message) {
+                $message->to('phupt.humg.94@gmail.com')
+                    ->subject('Test Email');
+            });
+        }catch (\Exception $exception) {
+            Log::error("=========== ". json_encode($exception->getMessage()));
+        }
+        return redirect()->back();
     }
 }

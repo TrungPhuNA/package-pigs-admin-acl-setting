@@ -66,6 +66,13 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-sm-12">
+                                    <label for="exampleInputEmail1">Encryption</label>
+                                    <input type="text"  name="mail_encryption" value="{{ $email->mail_encryption ?? "tls" }}" class="form-control">
+                                    @error('mail_encryption')
+                                    <small id="emailHelp" class="form-text text-danger">{{ $errors->first('mail_encryption') }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-sm-12">
                                     <label for="exampleInputEmail1">Người gửi</label>
                                     <input type="text"  name="mail_from_address" value="{{ $email->mail_from_address ?? "" }}" class="form-control">
                                     @error('mail_from_address')
@@ -75,6 +82,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Lưu dữ liệu</button>
+                        <a href="{{ route('get.adm_acl_setting.setting.email_test') }}"  class="btn btn-danger">Test send email</a>
                     </form>
                 </div>
             </div>
