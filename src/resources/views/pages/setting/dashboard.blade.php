@@ -21,7 +21,7 @@
                             <i class="uil-envelope-minus" style="font-size: 25px"></i>
                         </div>
                         <div class="content">
-                            <h5 style="margin: 0"><a href="{{ route('get.adm_acl_setting.setting.general') }}">Cấu hình email</a></h5>
+                            <h5 style="margin: 0"><a href="{{ route('get.adm_acl_setting.setting.email') }}">Cấu hình email</a></h5>
                             <p style="margin: 0;margin-top: 5px">Cấu hình các thông tin gủi email</p>
                         </div>
                     </div>

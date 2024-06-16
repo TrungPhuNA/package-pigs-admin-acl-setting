@@ -3,6 +3,9 @@
     "description": "Build admin acl and setting",
     "type": "library",
     "license": "MIT",
+    "require": {
+        "php": "^8.1",
+    },
     "autoload": {
         "psr-4": {
             "Pigs\\AdminAclSetting\\": "src/"
@@ -14,6 +17,5 @@
             "email": "codethue94@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "dev"
 }
