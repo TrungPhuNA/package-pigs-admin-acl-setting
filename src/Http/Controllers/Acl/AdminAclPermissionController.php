@@ -1,6 +1,6 @@
 <?php
 
-namespace Pigs\AdminAclSetting\Http\Controllers;
+namespace Pigs\AdminAclSetting\Http\Controllers\Acl;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;

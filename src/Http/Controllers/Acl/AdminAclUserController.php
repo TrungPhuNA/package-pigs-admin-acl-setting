@@ -1,6 +1,6 @@
 <?php
 
-namespace Pigs\AdminAclSetting\Http\Controllers;
+namespace Pigs\AdminAclSetting\Http\Controllers\Acl;
 
 use App\Models\User;
 use Carbon\Carbon;
