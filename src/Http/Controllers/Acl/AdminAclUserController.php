@@ -16,7 +16,7 @@ class AdminAclUserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = Account::whereRaw(1);
+        $users = Account::with("roles")->whereRaw(1);
         if ($n = $request->n) {
             $users->where('name', 'like', '%'.$n.'%');
         }
@@ -58,6 +58,16 @@ class AdminAclUserController extends Controller
                             "account_id" => $user->id,
                             "role_id"    => $roleID
                         ]);
+                    }
+                    $permissions = DB::table('roles_permissions')->whereIn("role_id",
+                        $request->roles)->pluck("permission_id")->toArray();
+                    if (!empty($permissions)) {
+                        foreach ($permissions as $id) {
+                            DB::table("accounts_permission")->insert([
+                                "account_id"    => $user->id,
+                                "permission_id" => $id
+                            ]);
+                        }
                     }
                 }
 
@@ -104,6 +114,19 @@ class AdminAclUserController extends Controller
                             "account_id" => $user->id,
                             "role_id"    => $roleID
                         ]);
+                        DB::table('accounts_permission')->where('account_id', $id)->delete();
+                    }
+
+                    $permissions = DB::table('roles_permissions')->whereIn("role_id",
+                        $request->roles)->pluck("permission_id")->toArray();
+                    dump($permissions);
+                    if (!empty($permissions)) {
+                        foreach ($permissions as $id) {
+                            DB::table("accounts_permission")->insert([
+                                "account_id"    => $user->id,
+                                "permission_id" => $id
+                            ]);
+                        }
                     }
                 }
 

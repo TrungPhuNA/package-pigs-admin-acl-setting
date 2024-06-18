@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Pigs\AdminAclSetting\Http\Requests\AdmAclTagRequest;
 
 class AdminAclSettingTagController extends Controller
 {
@@ -34,7 +35,7 @@ class AdminAclSettingTagController extends Controller
         return view('adm_acl_setting::pages.blog.tag.create');
     }
 
-    public function store(Request $request)
+    public function store(AdmAclTagRequest $request)
     {
         try {
             $data = $request->except("_token");
@@ -48,6 +49,7 @@ class AdminAclSettingTagController extends Controller
                 $exception->getMessage()." === [Line] === ".
                 $exception->getLine());
         }
+        return redirect()->back();
     }
 
     public function edit(Request $request, $id) {
@@ -55,7 +57,7 @@ class AdminAclSettingTagController extends Controller
         return view('adm_acl_setting::pages.blog.tag.update', compact('tag'));
     }
 
-    public function update(Request $request, $id)
+    public function update(AdmAclTagRequest $request, $id)
     {
         try {
             $data = $request->except("_token");
@@ -69,6 +71,7 @@ class AdminAclSettingTagController extends Controller
                 $exception->getMessage()." === [Line] === ".
                 $exception->getLine());
         }
+        return redirect()->back();
     }
 
     public function delete(Request $request, $id)

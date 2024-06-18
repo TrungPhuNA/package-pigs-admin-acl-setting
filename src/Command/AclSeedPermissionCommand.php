@@ -198,6 +198,12 @@ class AclSeedPermissionCommand extends Command
                 "description" => "Xoá từ bài viết"
             ],
             [
+                "name"        => "get.adm_acl_setting.setting.index",
+                "group"       => "setting",
+                "method"      => "GET",
+                "description" => "Danh sách cấu hình"
+            ],
+            [
                 "name"        => "get.adm_acl_setting.setting.email",
                 "group"       => "setting",
                 "method"      => "GET",

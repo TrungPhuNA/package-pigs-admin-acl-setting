@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use Pigs\BlogAdmin\Enums\EnumAdmBlog;
+use Pigs\AdminAclSetting\Enums\EnumsBlog;
 
 class AdminAclSettingArticleController extends Controller
 {
@@ -35,9 +35,9 @@ class AdminAclSettingArticleController extends Controller
     {
         try {
             $menus = DB::table(config('adm_acl_setting_config.blog.table.menu'))->where("status",
-                EnumAdmBlog::STATUS_PUBLISHED)->get();
+                EnumsBlog::STATUS_PUBLISHED)->get();
             $tags = DB::table(config('adm_acl_setting_config.blog.table.tags'))->where("status",
-                EnumAdmBlog::STATUS_PUBLISHED)->get();
+                EnumsBlog::STATUS_PUBLISHED)->get();
             $viewData = [
                 "menus"     => $menus,
                 "tags"      => $tags,

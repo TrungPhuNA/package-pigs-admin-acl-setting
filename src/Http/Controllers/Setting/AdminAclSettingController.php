@@ -2,6 +2,7 @@
 
 namespace Pigs\AdminAclSetting\Http\Controllers\Setting;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
@@ -74,9 +75,20 @@ class AdminAclSettingController extends Controller
     public function testSendEmail(Request $request)
     {
         try{
-            Mail::raw('codethue94@gmail.com', function ($message) {
-                $message->to('phupt.humg.94@gmail.com')
-                    ->subject('Test Email');
+            // Ghi log thông tin email
+            Log::info('Sending email with the following configuration:', [
+                'from' => config('mail.from.address'),
+                'username' => config('mail.username'),
+                'password' => config('mail.password'),
+                'mailer' => config('mail.mailer'),
+                'host' => config('mail.host'),
+                'port' => config('mail.port'),
+                'encryption' => config('mail.encryption'),
+            ]);
+
+            Mail::raw('Hệ thống test gủi email, xin cảm ơn', function ($message) {
+                $message->to('codethue94@gmail.com')
+                    ->subject('[Phú Phan] '. Carbon::now()->toString());
             });
         }catch (\Exception $exception) {
             Log::error("=========== ". json_encode($exception->getMessage()));

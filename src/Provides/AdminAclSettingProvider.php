@@ -71,7 +71,15 @@ class AdminAclSettingProvider extends ServiceProvider
         if (Schema::hasTable('settings_website')) {
             $emailSettings = SettingWebsite::first();
             if ($emailSettings) {
-                Config::set('mail.mailer', $emailSettings->mail_mailer);
+//                dump($emailSettings->mail_driver);
+//                dump($emailSettings->mail_host);
+//                dump($emailSettings->mail_port);
+//                dump($emailSettings->mail_username);
+//                dump($emailSettings->mail_password);
+//                dump($emailSettings->mail_encryption);
+//                dump($emailSettings->mail_from_address);
+//                dump($emailSettings->mail_domain);
+                Config::set('mail.mailer', $emailSettings->mail_driver);
                 Config::set('mail.host', $emailSettings->mail_host);
                 Config::set('mail.port', $emailSettings->mail_port);
                 Config::set('mail.username', $emailSettings->mail_username);

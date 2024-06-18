@@ -20,6 +20,17 @@
         .form-group label {
             margin-bottom: 5px;
         }
+        .hover-focus, .hover-focus .form-check-label {
+            cursor: pointer;
+        }
+
+        /*.side-nav-second-level {*/
+        /*    list-style-type: circle !important;*/
+        /*}*/
+        /*.side-nav-second-level li::marker {*/
+        /*    padding-left: 20px;*/
+        /*}*/
+
 
     </style>
 </head>
@@ -139,14 +150,16 @@
 
                 <!-- start page title -->
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    @yield('content')
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-12 mt-3">
+                        @yield('content')
+
+{{--                        <div class="card mt-3">--}}
+{{--                            <div class="card-body">--}}
+{{--                                <div class="tab-content">--}}
+{{--                                    --}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <!-- end page title -->
@@ -286,6 +299,52 @@
 <!-- bundle -->
 <script src="/theme_admin/js/vendor.min.js"></script>
 <script src="/theme_admin/js/app.min.js"></script>
+<script>
+    var SEO = {
+        init : function ()
+        {
+            this.showFormSeo()
+            this.keypressInput()
+        },
+
+        showFormSeo()
+        {
+            $(".js-action-seo").click(function (event){
+                event.preventDefault()
+                $(".box-seo").toggleClass('hide')
+            })
+        },
+
+        keypressInput()
+        {
+            $(".keypress-count").keyup(function (event){
+                event.preventDefault()
+                let $this = $(this)
+                let value = $this.val()
+                let elementSlug = $this.attr('data-slug')
+                let elementTitleSeo = $this.attr('data-title-seo')
+                let elementDescSeo = $this.attr('data-desc-seo')
+
+                let $boxCountChar = $this.prev()
+                if($boxCountChar.hasClass('char_counter'))
+                {
+                    $boxCountChar.find(".current").text(value.length)
+                }
+                // if(Global.checkUpdateForm() === false)
+                // {
+                //     $(elementSlug).val(slug)
+                //     $(elementTitleSeo).val(value)
+                //     $(elementDescSeo).val(value)
+                //     $(elementTitleSeo).text(value)
+                //     $(elementSlug).text(slug)
+                // }
+            })
+        }
+    }
+
+    SEO.init()
+
+</script>
 @yield('script')
 </body>
 </html>

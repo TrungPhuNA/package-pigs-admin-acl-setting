@@ -27,6 +27,12 @@
             </div>
         </div>
     </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="tab-content">
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('script')

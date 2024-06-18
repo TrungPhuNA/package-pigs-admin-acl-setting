@@ -39,4 +39,10 @@ class Account extends Authenticatable
     {
         return Arr::get($this->setStatus,$this->status, []);
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,'accounts_roles','role_id','account_id');
+    }
+
 }
