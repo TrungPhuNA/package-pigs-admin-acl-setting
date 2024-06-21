@@ -75,6 +75,17 @@ Route::group(['namespace'  => 'Pigs\AdminAclSetting\Http\Controllers', 'prefix' 
         Route::get('', 'AdminAclSettingContactController@index')->name('get.adm_acl_setting.contact.index');
         Route::get('delete/{id}', 'AdminAclSettingContactController@delete')->name('get.adm_acl_setting.contact.delete');
     });
+    Route::group(['prefix' => 'page','namespace' => 'Setting'], function () {
+        Route::get('', 'AdminAclSettingPageController@index')->name('get.adm_acl_setting.page.index');
+
+        Route::get('create', 'AdminAclSettingPageController@create');
+        Route::post('create', 'AdminAclSettingPageController@store')->name('get.adm_acl_setting.page.create');
+
+        Route::get('update/{id}', 'AdminAclSettingPageController@edit')->name('get.adm_acl_setting.page.update');
+        Route::post('update/{id}', 'AdminAclSettingPageController@update');
+
+        Route::get('delete/{id}', 'AdminAclSettingPageController@delete')->name('get.adm_acl_setting.page.delete');
+    });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {
         Route::group(['prefix' => 'tag'], function () {

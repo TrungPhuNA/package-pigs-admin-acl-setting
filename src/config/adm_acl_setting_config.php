@@ -17,6 +17,13 @@ return [
             'prefix'  => ['']
         ],
         [
+            'name'    => 'Page',
+            'icon'    => 'fas fa-tachometer-alt',
+            'route'   => 'get.adm_acl_setting.page.index',
+            'icon-v2' => 'uil-notebooks',
+            'prefix'  => ['page']
+        ],
+        [
             'name'     => 'Blog',
             'icon-v2'  => 'uil-notebooks',
             'route'    => '',

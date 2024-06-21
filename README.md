@@ -6,7 +6,7 @@ Build core admin, acl, blog setting config
 ## Description
 
 Build cho vui, tái sửa dụng, ae nào muốn phát triển cứ clone về nhé. 
-Version v1.2.1
+Version v1.2.4
 
 ## Installation
 

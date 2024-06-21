@@ -227,6 +227,30 @@ class AclSeedPermissionCommand extends Command
                 "method"      => "GET",
                 "description" => "Xoá thông tin liên hệ"
             ],
+            [
+                "name"        => "get.adm_acl_setting.page.index",
+                "group"       => "page",
+                "method"      => "GET",
+                "description" => "Danh sách page"
+            ],
+            [
+                "name"        => "get.adm_acl_setting.page.create",
+                "group"       => "page",
+                "method"      => "POST",
+                "description" => "Thêm mới page"
+            ],
+            [
+                "name"        => "get.adm_acl_setting.page.update",
+                "group"       => "page",
+                "method"      => "GET",
+                "description" => "Cập nhật page"
+            ],
+            [
+                "name"        => "get.adm_acl_setting.page.delete",
+                "group"       => "page",
+                "method"      => "GET",
+                "description" => "Xoá page"
+            ],
         ];
         foreach ($permissions as $item) {
             $this->warn("============= PERMISSION : ". $item['name']);
