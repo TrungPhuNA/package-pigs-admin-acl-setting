@@ -18,9 +18,9 @@ return [
         ],
         [
             'name'    => 'Page',
-            'icon'    => 'fas fa-tachometer-alt',
+            'icon'    => 'uil-minus-path',
             'route'   => 'get.adm_acl_setting.page.index',
-            'icon-v2' => 'uil-notebooks',
+            'icon-v2' => 'uil-minus-path',
             'prefix'  => ['page']
         ],
         [
@@ -57,7 +57,7 @@ return [
             'name'    => 'Liên hệ',
             'icon'    => 'fas fa-tachometer-alt',
             'route'   => 'get.adm_acl_setting.contact.index',
-            'icon-v2' => 'uil-file-contract-dollar',
+            'icon-v2' => 'uil-voicemail-rectangle',
             'prefix'  => ['contact']
         ],
         [
