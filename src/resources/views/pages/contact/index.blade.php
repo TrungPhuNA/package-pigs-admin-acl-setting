@@ -5,7 +5,7 @@
             <div class="tab-content">
                 <ol class="breadcrumb m-0 p-md-0">
                     <li class="breadcrumb-item"><a href="{{ route('get.adm_acl_setting.dashboard') }}">Admin</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('get.adm_acl_setting.article.index') }}">Article</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('get.adm_acl_setting.contact.index') }}">Contact</a></li>
                     <li class="breadcrumb-item active">Index</li>
                 </ol>
                 <div class="mt-2 mb-2">
@@ -25,27 +25,23 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Menu</th>
-                            <th>Trạng Thái</th>
+                            <th>Title</th>
+                            <th>Email</th>
+                            <th>Phone</th>
                             <th>Ngày tạo</th>
                             <th>Thao tác</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($articles ?? [] as $item)
+                        @foreach($contacts ?? [] as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->menu->name ?? "" }}</td>
-                                <td>
-                                    <span class="{{ \Pigs\AdminAclSetting\Enums\EnumsBlog::GET_TEXT_STATUS[$item->status]['class'] }}">{{ \Pigs\AdminAclSetting\Enums\EnumsBlog::GET_TEXT_STATUS[$item->status]['name'] }}</span>
-                                </td>
+                                <td>{{ $item->title }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>
-                                    <a href="{{ route('get.adm_acl_setting.article.update', $item->id) }}">Edit</a>
-                                    <a href="javascript:;void(0)">|</a>
-                                    <a href="{{ route('get.adm_acl_setting.article.delete', $item->id) }}">Delete</a>
+                                    <a href="{{ route('get.adm_acl_setting.contact.delete', $item->id) }}">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -53,7 +49,7 @@
                     </table>
                 </div>
                 <div>
-                    {!! $articles->appends($query ?? [])->links() !!}
+                    {!! $contacts->appends($query ?? [])->links() !!}
                 </div>
             </div>
         </div>

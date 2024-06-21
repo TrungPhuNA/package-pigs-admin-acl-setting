@@ -71,6 +71,10 @@ Route::group(['namespace'  => 'Pigs\AdminAclSetting\Http\Controllers', 'prefix' 
         Route::post('email', 'AdminAclSettingController@insertOrUpdateEmail');
         Route::get('email-test', 'AdminAclSettingController@testSendEmail')->name('get.adm_acl_setting.setting.email_test');
     });
+    Route::group(['prefix' => 'contact', 'namespace' => 'Contact'], function () {
+        Route::get('', 'AdminAclSettingContactController@index')->name('get.adm_acl_setting.contact.index');
+        Route::get('delete/{id}', 'AdminAclSettingContactController@delete')->name('get.adm_acl_setting.contact.delete');
+    });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {
         Route::group(['prefix' => 'tag'], function () {

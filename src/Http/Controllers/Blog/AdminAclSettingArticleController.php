@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Pigs\AdminAclSetting\Enums\EnumsBlog;
+use Pigs\AdminAclSetting\Models\AdmAclArticle;
 
 class AdminAclSettingArticleController extends Controller
 {
     public function index(Request $request)
     {
         try {
-            $articles = DB::table(config('adm_acl_setting_config.blog.table.articles'))->orderByDesc('id')
+            $articles = AdmAclArticle::with("menu")
                 ->paginate($request->page_size ?? 20);
 
             $viewData = [
@@ -56,10 +57,10 @@ class AdminAclSettingArticleController extends Controller
         $article = DB::table(config('adm_acl_setting_config.blog.table.articles'))->where("id", $id)->first();
 
         $menus = DB::table(config('adm_acl_setting_config.blog.table.menu'))->where("status",
-            EnumAdmBlog::STATUS_PUBLISHED)->get();
+            EnumsBlog::STATUS_PUBLISHED)->get();
 
         $tags = DB::table(config('adm_acl_setting_config.blog.table.tags'))->where("status",
-            EnumAdmBlog::STATUS_PUBLISHED)->get();
+            EnumsBlog::STATUS_PUBLISHED)->get();
         $tagActive = DB::table(config('adm_acl_setting_config.blog.table.articles_tags'))->where("article_id", $id)
             ->pluck("tag_id")->toArray();
 

@@ -47,6 +47,13 @@ return [
             'prefix'   => ['tag', 'menu', 'article']
         ],
         [
+            'name'    => 'Liên hệ',
+            'icon'    => 'fas fa-tachometer-alt',
+            'route'   => 'get.adm_acl_setting.contact.index',
+            'icon-v2' => 'uil-file-contract-dollar',
+            'prefix'  => ['contact']
+        ],
+        [
             'name'    => 'Setting Website',
             'icon'    => 'fas fa-cogs',
             'icon-v2' => 'uil-cog',

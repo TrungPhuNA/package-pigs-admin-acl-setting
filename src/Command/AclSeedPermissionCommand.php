@@ -215,6 +215,18 @@ class AclSeedPermissionCommand extends Command
                 "method"      => "GET",
                 "description" => "Thông tin website"
             ],
+            [
+                "name"        => "get.adm_acl_setting.contact.index",
+                "group"       => "contact",
+                "method"      => "GET",
+                "description" => "Thông tin liên hệ"
+            ],
+            [
+                "name"        => "gget.adm_acl_setting.contact.delete",
+                "group"       => "contact",
+                "method"      => "GET",
+                "description" => "Xoá thông tin liên hệ"
+            ],
         ];
         foreach ($permissions as $item) {
             $this->warn("============= PERMISSION : ". $item['name']);
